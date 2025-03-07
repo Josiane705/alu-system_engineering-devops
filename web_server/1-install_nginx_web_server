@@ -1,9 +1,14 @@
-#!/usr/bin/env bash
-#servers are the piece of softwaregeneratingg and serving html pages.
-#installing nginx the web-01
+#!/bin/bash
 
-apt-get update -y
-apt-get install nginx -y
-sudo ufw allow 'Nginx HTTP'
-sh -c 'echo  "hello world " > /var/www/html/index.html'
-service nginx restart
+# Update package list and install Nginx
+sudo apt-get update -y
+sudo apt-get install nginx -y
+
+# Ensure Nginx is running
+sudo service nginx start
+
+# Create a custom index.html page
+echo "Holberton School" | sudo tee /var/www/html/index.html > /dev/null
+
+# Restart Nginx without using systemctl
+sudo service nginx restart
