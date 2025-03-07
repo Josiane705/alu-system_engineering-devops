@@ -1,22 +1,16 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Update package list
-sudo apt update
+# This script installs Nginx, ensures it runs on port 80, and serves "Holberton School"
 
-# Install Nginx
-sudo apt install -y nginx
+# Update package list and install Nginx
+sudo apt-get update -y
+sudo apt-get install nginx -y
 
-# Start Nginx
+# Ensure Nginx is running
 sudo service nginx start
 
-# Enable Nginx to start on boot
-sudo systemctl enable nginx
-
-# Create a custom HTML page
-echo "Holberton School for the win!" | sudo tee /var/www/html/index.html
+# Create a custom index.html page
+echo "Holberton School" | sudo tee /var/www/html/index.html > /dev/null
 
 # Restart Nginx without using systemctl
 sudo service nginx restart
-
-# Allow HTTP traffic through the firewall (if UFW is enabled)
-sudo ufw allow 'Nginx Full'
