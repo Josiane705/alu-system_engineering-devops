@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script installs Nginx, ensures it runs on port 80, and serves "Holberton School"
 
